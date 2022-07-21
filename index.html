@@ -1,0 +1,93 @@
+<!-- GIVEN a command-line application that accepts user input
+WHEN I am prompted for my team members and their information
+THEN an HTML file is generated that displays a nicely formatted team roster based on user input
+WHEN I click on an email address in the HTML
+THEN my default email program opens and populates the TO field of the email with the address
+WHEN I click on the GitHub username
+THEN that GitHub profile opens in a new tab
+WHEN I start the application
+THEN I am prompted to enter the team manager’s name, employee ID, email address, and office number
+WHEN I enter the team manager’s name, employee ID, email address, and office number
+THEN I am presented with a menu with the option to add an engineer or an intern or to finish building my team
+WHEN I select the engineer option
+THEN I am prompted to enter the engineer’s name, ID, email, and GitHub username, and I am taken back to the menu
+WHEN I select the intern option
+THEN I am prompted to enter the intern’s name, ID, email, and school, and I am taken back to the menu
+WHEN I decide to finish building my team
+THEN I exit the application, and the HTML is generated
+Your application should use Jest for running the unit tests and Inquirer for collecting input from the user. The application will be invoked by using the following command: node index.js.
+├── __tests__/             //jest tests
+│   ├── Employee.test.js
+│   ├── Engineer.test.js
+│   ├── Intern.test.js
+│   └── Manager.test.js
+├── dist/                  // rendered output (HTML) and CSS style sheet      
+├── lib/                   // classes
+├── src/                   // template helper code 
+├── .gitignore             // indicates which folders and files Git should ignore
+├── index.js               // runs the application
+└── package.json           
+
+Important: Make sure that you remove dist from the .gitignore file so that Git will track this folder and include it when you push up to your application's repository.
+The application must include Employee, Manager, Engineer, and Intern classes. The tests for these classes (in the _tests_ directory) must ALL pass.
+The first class is an Employee parent class with the following properties and methods:
+
+
+name
+id
+email
+getName()
+getId()
+getEmail()
+getRole()—returns 'Employee'
+The other three classes will extend Employee.
+In addition to Employee's properties and methods, Manager will also have the following:
+officeNumber
+getRole()—overridden to return 'Manager'
+In addition to Employee's properties and methods, Engineer will also have the following:
+github—GitHub username
+getGithub()
+getRole()—overridden to return 'Engineer'
+In addition to Employee's properties and methods, Intern will also have the following:
+school
+getSchool()
+getRole()—overridden to return 'Intern'
+Finally, although it’s not a requirement, consider adding validation to ensure that user input is in the proper format. -->
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <main>
+        <form action="" id="manager">
+            <h1>Manager Information</h1>
+            <input type="text" name="" id="" placeholder="name">
+            <input type="text" name="" id="" placeholder="id">
+            <input type="email" name="" id="" placeholder="email address">
+            <input type="text" name="" id="" placeholder="office number">
+            <button type="submit">Log In</button>
+        </form>
+        <div class="menu hidden"> 
+        <div class="flex sp-c"><h2>My Team</h2> <button type="button" id="new-e">Add Engineer</button><button type="button" id="new-i">New Intern</button></div>
+           </div>
+        <div class="add hidden">
+            <form action="" data-c="engineer" id="add-new">
+                <h1 id="manager-control">Engineer Information</h1>
+                <input type="text" placeholder="name">
+                <input type="text" placeholder="id">
+                <input type="text" placeholder="GitHub username">
+                <input type="email" placeholder="email">
+                <button type="submit">Create Data</button>
+            </form>
+        </div>
+    </main>
+    <script src="index.js">
+        
+    </script>
+</body>
+</html>
